@@ -1,0 +1,11 @@
+{
+  "name": "devops",
+  "version": "0.0.1",
+  "description": "devops-course",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "",
+  "license": "MIT"
+}
