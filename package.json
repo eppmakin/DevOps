@@ -4,7 +4,7 @@
   "description": "devops-course",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "node test.js"
   },
   "author": "",
   "license": "MIT"
