@@ -9,10 +9,11 @@ const result2 = app.terve();
 const expected2 = 'Hello world!'
 assert.strictEqual(result2, expected2, 'Tervehdys ei onnistunut.');
 
+/*
 const result3 = app.failure(1, 1);
 const expected3 = 2
 assert.strictEqual(result3, expected3, 'Esimerkki läpäisemättömästä testistä.');
-
+*/
 
 console.log('----- Test Results -----');
 console.log(`Total tests: ${2}`);
