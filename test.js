@@ -1,6 +1,8 @@
 const assert = require('assert');
 const app = require('./app.js');
 
+let failures = 0;
+
 const result1 = app.ynnays(2, 3);
 const expected1 = 5;
 assert.strictEqual(result1, expected1, 'Ynnäys ei onnistunut.');
