@@ -1,7 +1,7 @@
 const assert = require('assert');
 const app = require('./app.js');
 
-let failures = 0;
+assert.failures = 0;
 
 const result1 = app.ynnays(2, 3);
 const expected1 = 5;
