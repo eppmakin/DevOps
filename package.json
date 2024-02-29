@@ -7,8 +7,5 @@
     "test": "node test.js"
   },
   "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "mocha": "^10.3.0"
-  }
+  "license": "MIT"
 }
