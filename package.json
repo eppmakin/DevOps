@@ -4,8 +4,11 @@
   "description": "devops-course",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "cucumber-js"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.3.1"
+  }
 }
