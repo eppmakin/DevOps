@@ -4,11 +4,15 @@
   "description": "devops-course",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js"
+    "test": "mocha && cucumber-js",
+    "test-mocha": "mocha",
+    "test-cucumber": "cucumber-js"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@cucumber/cucumber": "^10.3.1"
+    "@cucumber/cucumber": "^10.3.1",
+    "chai": "^5.1.0",
+    "mocha": "^10.3.0"
   }
 }
