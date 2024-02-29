@@ -6,11 +6,14 @@ function terve() {
     return 'Hello world!';
 }
 
-function failure(a, b) {
-    return a + b + 1
+function check_spread(price, bid) {
+    let difference = Math.abs(price - bid);
+    let tenPercent = Math.max(price, bid) * 0.1;
+    return difference <= tenPercent;
 }
+
 module.exports = {
     ynnays,
     terve,
-    failure
+    check_spread
 };
