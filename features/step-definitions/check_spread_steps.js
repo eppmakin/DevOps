@@ -1,6 +1,6 @@
-const { Given, When, Then } = require('cucumber');
+const { Given, When, Then } = require('@cucumber/cucumber');
 const assert = require('assert');
-const app = require('./check_spread.js');
+const app = require('../../src/check_spread.js');
 
 Given('the price is {int}', function (price) {
   this.price = price;
