@@ -4,6 +4,4 @@ function check_spread(price, bid) {
     return difference <= tenPercent;
 }
 
-module.exports = {
-    check_spread: check_spread
-}
+module.exports = check_spread;
