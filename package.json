@@ -3,6 +3,12 @@
   "version": "0.0.1",
   "description": "devops-course",
   "main": "index.js",
+  "private": true,
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
   "scripts": {
     "test": "mocha && cucumber-js",
     "test-mocha": "mocha",
@@ -15,6 +21,7 @@
     "axios": "^0.21.1",
     "chai": "^5.1.0",
     "mocha": "^10.3.0",
-    "chai-http": "^4.4.0"
+    "chai-http": "^4.4.0",
+    "semantic-release": "^23.0.2"
   }
 }
