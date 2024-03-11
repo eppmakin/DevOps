@@ -2,14 +2,14 @@
 
 ## Description
 
-This project is a web application developed as part of a group assignment for a studying project of JYU course TJTS5901 - Continuous Software Engineering in spring semester 2024. 
+This project is a web application developed as part of a group assignment for a studying project of JYU course TJTS5901 - Continuous Software Engineering in spring semester 2024.
 Detailed course information is found here: https://sisu.jyu.fi/student/courseunit/otm-64c92c23-a413-48ad-ac29-9ae54ba0b658
 
 The application allows users to perform off-market trades for a single stock, specifically focused on APPLE (AAPL). Orders are matched outside of a stock exchange, and the web application interacts with end users through a REST API. It fetches the latest market data of the stock from a feed to validate the price of input orders.
 
 More info about the data used: https://docs.marketdata.app/docs/api.
 
-The application can be used for example in Postman https://www.postman.com/ or in other similar API platform.
+The application can be used for example in Postman https://www.postman.com/ or in other similar API platforms.
 
 
 ## Installation
