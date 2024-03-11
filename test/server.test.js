@@ -1,6 +1,11 @@
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-const server = require('../src/server.js');
+let chai, chaiHttp, server;
+
+before(async () => {
+  chai = await import('chai');
+  chaiHttp = await import('chai-http');
+  server = await import('../src/server.js');
+  chai.use(chaiHttp);
+});
 
 chai.use(chaiHttp);
 const expect = chai.expect;
