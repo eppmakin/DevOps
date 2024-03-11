@@ -60,7 +60,7 @@ function matchOrders(existingOrders, order) {
     existingOrders.length = 0;
     existingOrders.push(...sortedOrders);
     // Return the matched trades and the updated existing orders
-    return { trades: matchedTrades, existingOrders: sortedOrders };
+    return [matchedTrades, existingOrders];
 }
 
 function matchOrder(newOrder, existingOrder) {
