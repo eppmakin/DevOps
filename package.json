@@ -12,8 +12,9 @@
   "license": "MIT",
   "devDependencies": {
     "@cucumber/cucumber": "^10.3.1",
+    "axios": "^0.21.1",
     "chai": "^5.1.0",
     "mocha": "^10.3.0",
-    "axios": "^0.21.1"
+    "chai-http": "^4.4.0"
   }
 }
