@@ -7,7 +7,6 @@ class OrderEventEmitter extends EventEmitter {}
 const orderEventEmitter = new OrderEventEmitter();
 const axios = require('axios');
 const trades = [{price: 100, quantity: 10, type: 'bid'}, {price: 101, quantity: 10, type: 'offer'}];
-
 let market_price = 0;
 
 async function getMarketPrice() {
@@ -26,7 +25,9 @@ function returnTrades() {
 }
 
 
-const orders = [];
+let state = {
+    order: {}
+};
 
 const server = http.createServer((req, res) => {
     if (req.method === 'POST' && req.url === '/order') {
@@ -45,13 +46,12 @@ const server = http.createServer((req, res) => {
                 res.end('Order price is not within allowed spread');
             }
             else {
-                const order = {
+                state.order = {
                     order: order_type,
                     price: parseInt(orderData.price, 10),
                     quantity: parseInt(orderData.quantity, 10)
                 };
-                orders.push(order);
-                orderEventEmitter.emit('ordersChanged');
+                orderEventEmitter.emit('orderChanged');
                 res.end('Order received');
             } 
         });
@@ -78,7 +78,7 @@ server.listen(3000, async () => {
 
 module.exports = {
     server,
-    orders,
+    state,
     market_price,
     orderEventEmitter: orderEventEmitter
 };

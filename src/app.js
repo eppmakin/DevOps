@@ -1,7 +1,7 @@
 const check_spread = require('./check_spread.js');
-const { orders, market_price, orderEventEmitter } = require('./server.js');
+const { state, market_price, orderEventEmitter } = require('./server.js');
 
-orderEventEmitter.on('ordersChanged', () => {
-    console.log(orders);
+orderEventEmitter.on('orderChanged', () => {
+    console.log(state.order);
     console.log(market_price);
 });
