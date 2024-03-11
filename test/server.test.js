@@ -7,7 +7,6 @@ before(async () => {
   chai.use(chaiHttp);
 });
 
-chai.use(chaiHttp);
 const expect = chai.expect;
 
 describe('Orders', () => {
