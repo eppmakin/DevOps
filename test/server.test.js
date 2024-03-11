@@ -5,9 +5,8 @@ before(async () => {
   chaiHttp = await import('chai-http');
   server = await import('../src/server.js');
   chai.use(chaiHttp);
+  expect = chai.expect;
 });
-
-const expect = chai.expect;
 
 describe('Orders', () => {
     it('should accept valid orders', done => {
