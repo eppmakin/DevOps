@@ -1,0 +1,32 @@
+### 
+# @name validOrder
+POST http://localhost:3000/order
+Content-Type: application/x-www-form-urlencoded
+
+type=Bid&price=100&quantity=1
+
+### 
+# @name invalidOrder
+POST http://localhost:3000/order
+Content-Type: application/x-www-form-urlencoded
+
+type=Invalid&price=300&quantity=3
+
+### 
+# @name createOffer
+POST http://localhost:3000/order
+Content-Type: application/x-www-form-urlencoded
+
+type=OFfEr&price=169&quantity=1
+
+### 
+# @name createBid
+POST http://localhost:3000/order
+Content-Type: application/x-www-form-urlencoded
+
+type=BiD&price=169&quantity=1
+
+###
+# @name getTrades
+GET http://localhost:3000/trades
+Content-Type: application/x-www-form-urlencoded
