@@ -9,7 +9,7 @@ The application allows users to perform off-market trades for a single stock, sp
 
 More info about the data used: https://docs.marketdata.app/docs/api.
 
-The application can be used for example in Postman https://www.postman.com/ or in other similar API platforms.
+The application can be used for example in Postman https://www.postman.com/ or in other similar API platforms. We recommend installing the REST Client by Huachao Mao in Visual Studio Code extensions.
 
 
 ## Installation
@@ -29,10 +29,11 @@ To install the project, follow these steps:
 
 After installation, you can run the web application by executing the following command:
 ```bash
-npm start
+node src/app.js
 ```
 
+Once the application is running, you can access it in `http://localhost:3000`. The application should automatically be running on your Terminal.
 
-Once the application is running, you can access it in `http://localhost:3000`.
+If REST Client is installed on your Visual Studio Code you can create HTTP requests to the server in the testi.http file. You can create POST requests for orders and see current trade information with GET requests.
 
 For more information: check test files.
