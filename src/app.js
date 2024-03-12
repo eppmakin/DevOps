@@ -1,4 +1,4 @@
-const { state, market_price, orderEventEmitter } = require('./server.js');
+const { state, market_price, orderEventEmitter, getMarketPrice } = require('./server.js');
 const { getTrades, setTrades } = require('./trades.js');
 const matchOrders = require('./match_order.js');
 
@@ -12,4 +12,13 @@ orderEventEmitter.on('orderChanged', () => {
     requests = matchingResults[1];
     console.log(requests);
     console.log(getTrades());
+});
+
+const { server } = require('./server.js');
+
+server.listen(3000, async () => {
+  console.log('Server listening on port 3000');
+
+  await getMarketPrice();
+  setInterval(getMarketPrice, 60 * 60 * 1000);   
 });

@@ -75,19 +75,20 @@ const server = http.createServer((req, res) => {
             res.end('Invalid request');
         }
         });
+/*
+server.listen(3000, async () => {
+console.log('Server listening on port 3000');
 
-    server.listen(3000, async () => {
-    console.log('Server listening on port 3000');
-
-    await getMarketPrice();
-    setInterval(getMarketPrice, 60 * 60 * 1000);   
-    }
+await getMarketPrice();
+setInterval(getMarketPrice, 60 * 60 * 1000);   
+}
 
 );
-
+*/
 module.exports = {
     server,
     state,
     market_price,
-    orderEventEmitter: orderEventEmitter
+    orderEventEmitter: orderEventEmitter,
+    getMarketPrice
 };

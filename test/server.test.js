@@ -1,9 +1,22 @@
 const http = require('http');
 const assert = require('assert');
-const server = require('../src/server.js');
+// const server = require('../src/server.js');
+const app = require('../src/server.js');
 
 describe('Orders', () => {
   const port = 3000;
+  let server;
+
+  // Start a new server before each test
+  beforeEach(done => {
+    server = require('../src/server.js').server;
+    server.listen(port, done);
+  });
+
+  // Close the server after each test
+  afterEach(done => {
+    server.close(done);
+  });
 
   it('should accept valid orders', done => {
     const options = {

@@ -77,6 +77,14 @@ describe('matchOrders', function() {
         assert.strictEqual(trades.length, 1);
         assert.strictEqual(trades[0].price, 105);
         assert.strictEqual(trades[0].quantity, 50);
+
+        // Check if the unmatched order is in the existingOrders array
+        const unmatchedOrder = existingOrders.find(order => order.type === 'bid' && order.price === 105);
+        assert.ok(unmatchedOrder, 'Unmatched order should be in the existingOrders array');
+        assert.strictEqual(unmatchedOrder.quantity, 20, 'Unmatched order should have a quantity of 20');
+
+        // Print the unmatched order to the console
+        console.log('Unmatched order:', unmatchedOrder);
     });
 
     it('should not match orders if the bid price is lower than the offer price', function() {
