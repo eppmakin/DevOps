@@ -14,13 +14,14 @@
 function matchOrders(existingOrders, order) {
     // Creating a copy of the new order just in case.
     const newOrder = {...order};
+    console.log(`New order: ${newOrder.type} - Quantity: ${newOrder.quantity}`);
     // Sort the existing orders based on the type of the new order
     const sortedOrders = [...existingOrders].sort((a, b) => {
-        if (newOrder.type === 'Bid') {
+        if (newOrder.type === 'bid') {
             if (a.price !== b.price) {
                 return a.price - b.price; // sort in ascending order of price for bids
             }   
-        } else if (newOrder.type === 'Offer') {
+        } else if (newOrder.type === 'offer') {
             if (a.price !== b.price) {
                 return b.price - a.price; // sort in descending order of price for offers
         }
@@ -44,10 +45,18 @@ function matchOrders(existingOrders, order) {
 
                 // Log the details of the successful trade
                 console.log(`Trade successful: ${JSON.stringify(trade)}`);
-
+                /*
                 // Remove the matched order from the sortedOrders array
                 sortedOrders.splice(i, 1);
                 i--; // decrement i to account for the removed order
+                */
+                // Update the quantity of the matched order or remove it if it's fully matched
+                if (sortedOrders[i].quantity > trade.quantity) {
+                    sortedOrders[i].quantity -= trade.quantity;
+                } else {
+                    sortedOrders.splice(i, 1);
+                    i--; // decrement i to account for the removed order
+        }
             }
         }
     }
@@ -66,8 +75,8 @@ function matchOrders(existingOrders, order) {
 function matchOrder(newOrder, existingOrder) {
     // For bids, only match if the new order's price is the highest among all orders
     // For offers, only match if the new order's price is the lowest among all orders
-    if ((newOrder.type === 'Bid' && newOrder.price >= existingOrder.price) ||
-        (newOrder.type === 'Offer' && newOrder.price <= existingOrder.price)) {
+    if ((newOrder.type === 'bid' && newOrder.price >= existingOrder.price) ||
+        (newOrder.type === 'offer' && newOrder.price <= existingOrder.price)) {
         const tradedQuantity = Math.min(existingOrder.quantity, newOrder.quantity);
         const tradedPrice = Math.max(existingOrder.price, newOrder.price);
         return {
