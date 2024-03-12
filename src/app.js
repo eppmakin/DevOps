@@ -7,8 +7,9 @@ requests = []
 orderEventEmitter.on('orderChanged', () => {
     console.log(state.order);
     console.log(market_price);
-    requests, newTrades = matchOrders(requests, state.order);
-    setTrades(newTrades);
+    matchingResults = matchOrders(requests, state.order);
+    setTrades(matchingResults[0]);
+    requests = matchingResults[1];
     console.log(requests);
     console.log(getTrades());
 });

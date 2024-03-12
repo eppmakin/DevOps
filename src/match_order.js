@@ -16,11 +16,11 @@ function matchOrders(existingOrders, order) {
     const newOrder = {...order};
     // Sort the existing orders based on the type of the new order
     const sortedOrders = [...existingOrders].sort((a, b) => {
-        if (newOrder.type === 'Bid') {
+        if (newOrder.type === 'bid') {
             if (a.price !== b.price) {
                 return a.price - b.price; // sort in ascending order of price for bids
             }   
-        } else if (newOrder.type === 'Offer') {
+        } else if (newOrder.type === 'offer') {
             if (a.price !== b.price) {
                 return b.price - a.price; // sort in descending order of price for offers
         }

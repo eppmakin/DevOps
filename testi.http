@@ -17,14 +17,14 @@ type=Invalid&price=300&quantity=3
 POST http://localhost:3000/order
 Content-Type: application/x-www-form-urlencoded
 
-type=OFfEr&price=169&quantity=1
+type=OFfEr&price=170&quantity=1
 
 ### 
 # @name createBid
 POST http://localhost:3000/order
 Content-Type: application/x-www-form-urlencoded
 
-type=BiD&price=169&quantity=1
+type=BiD&price=170&quantity=1
 
 ###
 # @name getTrades
