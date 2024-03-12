@@ -45,10 +45,18 @@ function matchOrders(existingOrders, order) {
 
                 // Log the details of the successful trade
                 console.log(`Trade successful: ${JSON.stringify(trade)}`);
-
+                /*
                 // Remove the matched order from the sortedOrders array
                 sortedOrders.splice(i, 1);
                 i--; // decrement i to account for the removed order
+                */
+                // Update the quantity of the matched order or remove it if it's fully matched
+                if (sortedOrders[i].quantity > trade.quantity) {
+                    sortedOrders[i].quantity -= trade.quantity;
+                } else {
+                    sortedOrders.splice(i, 1);
+                    i--; // decrement i to account for the removed order
+        }
             }
         }
     }
