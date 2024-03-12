@@ -39,8 +39,11 @@ const server = http.createServer((req, res) => {
             body += chunk.toString();
         });
         req.on('end', () => {
+            console.log(`Body: ${body}`);
             const orderData = querystring.parse(body);
-            const order_price = orderData.price / orderData.quantity;
+            console.log(`Parsed data: ${JSON.stringify(orderData)}`);
+            // const order_price = orderData.price / orderData.quantity;
+            const order_price = orderData.price;
             const order_type = orderData.type.toLowerCase();
             if (order_type != 'bid' && order_type != 'offer') {
                 res.statusCode = 400;
@@ -52,7 +55,8 @@ const server = http.createServer((req, res) => {
             }
             else {
                 state.order = {
-                    order: order_type,
+                    // order: order_type,
+                    type: order_type,
                     price: parseInt(orderData.price, 10),
                     quantity: parseInt(orderData.quantity, 10)
                 };

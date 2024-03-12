@@ -14,6 +14,7 @@
 function matchOrders(existingOrders, order) {
     // Creating a copy of the new order just in case.
     const newOrder = {...order};
+    console.log(`New order: ${newOrder.type} - Quantity: ${newOrder.quantity}`);
     // Sort the existing orders based on the type of the new order
     const sortedOrders = [...existingOrders].sort((a, b) => {
         if (newOrder.type === 'bid') {
