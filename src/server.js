@@ -6,7 +6,8 @@ const EventEmitter = require('events');
 class OrderEventEmitter extends EventEmitter {}
 const orderEventEmitter = new OrderEventEmitter();
 const axios = require('axios');
-const trades = [{price: 100, quantity: 10, type: 'bid'}, {price: 101, quantity: 10, type: 'offer'}];
+const { getTrades } = require('./trades.js');
+
 let market_price = 170;
 
 async function getMarketPrice() {
@@ -20,7 +21,9 @@ async function getMarketPrice() {
   }
 }
 
+
 function returnTrades() {
+    let trades = getTrades();
     return JSON.stringify(trades);
 }
 
