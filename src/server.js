@@ -10,7 +10,7 @@ const { getTrades } = require('./trades.js');
 // Import the chalk module
 const chalk = require('chalk');
 
-let market_price;
+let market_price = 170;
 
 async function getMarketPrice() {
   try {

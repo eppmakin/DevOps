@@ -3,7 +3,7 @@
 POST http://localhost:3000/order
 Content-Type: application/x-www-form-urlencoded
 
-type=offer&price=175&quantity=100
+type=offer&price=170&quantity=750
 
 ### 
 # @name invalidOrder
@@ -24,7 +24,7 @@ type=OFfEr&price=171&quantity=1
 POST http://localhost:3000/order
 Content-Type: application/x-www-form-urlencoded
 
-type=BiD&price=180&quantity=300
+type=BiD&price=170&quantity=1000
 
 ###
 # @name getTrades
