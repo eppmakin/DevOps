@@ -66,8 +66,8 @@ function matchOrders(existingOrders, order) {
 function matchOrder(newOrder, existingOrder) {
     // For bids, only match if the new order's price is the highest among all orders
     // For offers, only match if the new order's price is the lowest among all orders
-    if ((newOrder.type === 'Bid' && newOrder.price >= existingOrder.price) ||
-        (newOrder.type === 'Offer' && newOrder.price <= existingOrder.price)) {
+    if ((newOrder.type === 'bid' && newOrder.price >= existingOrder.price) ||
+        (newOrder.type === 'offer' && newOrder.price <= existingOrder.price)) {
         const tradedQuantity = Math.min(existingOrder.quantity, newOrder.quantity);
         const tradedPrice = Math.max(existingOrder.price, newOrder.price);
         return {
