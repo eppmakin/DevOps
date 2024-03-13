@@ -18,7 +18,7 @@ jobs:
       - name: Check if pull request was merged
         if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
         run: echo "Pull request was merged, triggering build"
-        
+
       - uses: actions/checkout@v4
       - name: Use Node.js
         uses: actions/setup-node@v3
@@ -27,3 +27,4 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
+      - run: npm run test-code-coverage
