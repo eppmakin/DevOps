@@ -4,4 +4,4 @@
 *.env
 assignment.pdf
 arkkitehtuuri.txt
-/.nyc-output
+/.nyc_output
