@@ -3,7 +3,7 @@
 POST http://localhost:3000/order
 Content-Type: application/x-www-form-urlencoded
 
-type=offer&price=170&quantity=750
+type=offer&price=170&quantity=10.1
 
 ### 
 # @name invalidOrder

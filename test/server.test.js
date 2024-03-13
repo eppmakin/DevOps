@@ -42,7 +42,7 @@ describe('Orders', () => {
       });
     });
 
-    req.write('type=OFfEr&price=170&quantity=1');
+    req.write('type=OFfEr&price=170&quantity=100');
     req.end();
   });
 
