@@ -17,7 +17,7 @@ async function getMarketPrice() {
       try {
         const response = await axios.get('https://api.marketdata.app/v1/stocks/quotes/AAPL/?human=false');
         console.log(chalk.yellow('Fetching market data...'));
-        console.log(response.data);
+        console.log(response.data.symbol);
         market_price = response.data.last[0];
         console.log(chalk.magenta("Last Traded Price: "+market_price));
         resolve(market_price);
@@ -27,12 +27,12 @@ async function getMarketPrice() {
       }
     });
   }
-
+/*
 // Fetch the market price when the server starts
 getMarketPrice().catch(error => {
     console.error(`Failed to fetch market price: ${error}`);
 });
-
+*/
 function setMarketPrice(price) {
     market_price = price;
 }

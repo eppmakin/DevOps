@@ -136,30 +136,40 @@ describe('Verify input prices are validated based on latest market data', functi
         server = require('../src/server.js').server;
         server.listen(port, done);
         resetTrades();
+        requests = [];
+
+        // Add a listener for the 'orderChanged' event
+        orderEventEmitter.on('orderChanged', () => {
+            let matchingResults = matchOrders(requests, state.order);
+            setTrades(matchingResults[0]);
+            requests = matchingResults[1];
+        });
     });
     
     // Close the server after each test
     afterEach(done => {
-      server.close(done);
+        server.close(done);
+        // Remove the 'orderChanged' listener
+        orderEventEmitter.removeAllListeners('orderChanged');
     });
   
     it('should accept Bid order at Price M1 x 1.08', done => {
         const bidPrice = lastTradePrice * 1.08;
-        sendOrderRequest('bid', bidPrice, 1, 200, 'Order received', done, port);
+        sendOrderRequest('bid', bidPrice, 100, 200, 'Order received', done, port);
     });
     it('should accept Offer order at Price M1 x 0.90', done => {
         const offerPrice = lastTradePrice * 0.90;
-        sendOrderRequest('offer', offerPrice, 1, 200, 'Order received', done, port);
+        sendOrderRequest('offer', offerPrice, 150, 200, 'Order received', done, port);
     });
     
     it('should reject Bid order at Price M1 x 1.11', done => {
         const bidPrice = lastTradePrice * 1.11;
-        sendOrderRequest('bid', bidPrice, 1, 400, 'Order price is not within allowed spread', done, port);
+        sendOrderRequest('bid', bidPrice, 50, 400, 'Order price is not within allowed spread', done, port);
     });
     
     it('should reject Offer order at Price M1 x -1.01', done => {
         const offerPrice = lastTradePrice * -1.01;
-        sendOrderRequest('offer', offerPrice, 1, 400, 'Order price is not within allowed spread', done, port);
+        sendOrderRequest('offer', offerPrice, 200, 400, 'Order price is not within allowed spread', done, port);
     });
 
     it('should verify no trades have happened', done => {
@@ -201,11 +211,23 @@ describe('Verify input quantity is valid', function() {
     beforeEach(done => {
         server = require('../src/server.js').server;
         server.listen(port, done);
+        resetTrades();
+        requests = [];
+
+        // Add a listener for the 'orderChanged' event
+        orderEventEmitter.on('orderChanged', () => {
+            let matchingResults = matchOrders(requests, state.order);
+            setTrades(matchingResults[0]);
+            requests = matchingResults[1];
+        });
     });
 
     // Close the server after each test
     afterEach(done => {
         server.close(done);
+
+        // Remove the 'orderChanged' listener
+        orderEventEmitter.removeAllListeners('orderChanged');
     });
 
     it('should reject Bid order at Price M2, Qty 0', done => {
