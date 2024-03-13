@@ -11,7 +11,12 @@ function setTrades(newTrades) {
     trades = trades.concat(newTrades);
 }
 
+function resetTrades() {
+    trades = [];
+}
+
 module.exports = {
     getTrades,
-    setTrades
+    setTrades,
+    resetTrades
 };
