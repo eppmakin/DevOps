@@ -7,13 +7,9 @@ const chalk = require('chalk');
 requests = []
 
 orderEventEmitter.on('orderChanged', () => {
-    // console.log(state.order);
-    // console.log(market_price);
     matchingResults = matchOrders(requests, state.order);
     setTrades(matchingResults[0]);
     requests = matchingResults[1];
-    // console.log(requests);
-    // console.log(getTrades());
 });
 
 const { server } = require('./server.js');

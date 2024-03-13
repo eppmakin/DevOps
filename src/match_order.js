@@ -1,13 +1,8 @@
 // src/match_order.js
 // Helper function to match orders. App.js (or what ever) will call this function to match orders.
+
 // Import the chalk module
 const chalk = require('chalk');
-
-// This is a first draft of the match algorithm. It has been developed without the knowledge of how
-// the actual REST api etc. will look like.
-
-// TODO: Dates need to be handled properly. The current implementation is not ideal. 
-// The way of recording trade times is not implemented either. Just using date.now() for now.
 
 // The function takes in an array of existing orders and a new order. It then checks if any trades are applicable.
 // The function should return an object with the following properties:
@@ -18,7 +13,6 @@ function matchOrders(existingOrders, order) {
     const newOrder = {...order};
     // For logging purposes
     let tradeOccurred = false;
-    // console.log(`New order: ${newOrder.type} - Quantity: ${newOrder.quantity}`);
     console.log(chalk.white(`Received a new order: ${JSON.stringify(newOrder)}`));
     console.log(chalk.gray("Looking for possible trades..."));
     // Generate the timestamp before the matching process
@@ -56,11 +50,7 @@ function matchOrders(existingOrders, order) {
                 // Log the details of the successful trade
                 console.log(chalk.cyan('Found a match for the order. Initiating trade...'));
                 console.log(chalk.green(`Trade successful: ${JSON.stringify(trade)}`));
-                /*
-                // Remove the matched order from the sortedOrders array
-                sortedOrders.splice(i, 1);
-                i--; // decrement i to account for the removed order
-                */
+
                 // Update the quantity of the matched order or remove it if it's fully matched
                 if (sortedOrders[i].quantity > trade.quantity) {
                     sortedOrders[i].quantity -= trade.quantity;

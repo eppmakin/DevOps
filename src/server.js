@@ -42,9 +42,7 @@ const server = http.createServer((req, res) => {
             body += chunk.toString();
         });
         req.on('end', () => {
-            // console.log(`Body: ${body}`);
             const orderData = querystring.parse(body);
-            // const order_price = orderData.price / orderData.quantity;
             const order_price = orderData.price;
             const order_type = orderData.type.toLowerCase();
             if (order_type != 'bid' && order_type != 'offer') {
@@ -57,7 +55,6 @@ const server = http.createServer((req, res) => {
             }
             else {
                 state.order = {
-                    // order: order_type,
                     type: order_type,
                     price: parseInt(orderData.price, 10),
                     quantity: parseInt(orderData.quantity, 10)
@@ -76,17 +73,9 @@ const server = http.createServer((req, res) => {
             res.statusCode = 400;
             res.end('Invalid request');
         }
-        });
-/*
-server.listen(3000, async () => {
-console.log('Server listening on port 3000');
+});
 
-await getMarketPrice();
-setInterval(getMarketPrice, 60 * 60 * 1000);   
-}
 
-);
-*/
 module.exports = {
     server,
     state,

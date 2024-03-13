@@ -8,7 +8,6 @@ function getTrades() {
 }
 
 function setTrades(newTrades) {
-    // trades = newTrades;
     trades = trades.concat(newTrades);
 }
 

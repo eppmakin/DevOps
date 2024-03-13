@@ -1,6 +1,5 @@
 const http = require('http');
 const assert = require('assert');
-// const server = require('../src/server.js');
 const app = require('../src/server.js');
 
 describe('Orders', () => {
